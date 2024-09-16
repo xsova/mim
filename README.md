@@ -19,11 +19,40 @@ should be all good to go
 
 ### macos
 
-ensure podman machine is initialized as such:
+install [homebrew](https://brew.sh/)
 
+install dependencies with homebrew
+```sh
+brew install pipx python3.12 podman podman-desktop \
+  && pipx install poetry
+```
+
+clone the repo
+```sh
+git clone https://github.com/redthing1/mim.git
+```
+
+enter cloned repo
+```sh
+cd ./mim
+```
+
+install mim with poetry
+```sh
+poetry install
+```
+
+_you may need to open podman desktop once to configure it_
+
+ensure podman machine is initialized as such:
 ```sh
 podman machine init --volume /Users --volume /Volumes
 podman machine stop && ulimit -n unlimited && podman machine start
+```
+
+create a new shell in the virtual environment (you can also prepend `poetry run` before the useage calls)
+```sh
+poetry shell
 ```
 
 ## usage
